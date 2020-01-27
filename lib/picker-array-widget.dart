@@ -18,6 +18,7 @@ class PickerArrayWidget extends StatelessWidget {
     this.style,
     this.confirmText,
     this.cancelText,
+    this.actAfterSelected,
   }) : super(key: key);
   final TextEditingController controller;
   final FocusNode focusNode;
@@ -30,6 +31,7 @@ class PickerArrayWidget extends StatelessWidget {
   final TextStyle style;
   final String confirmText;
   final String cancelText;
+  final Function actAfterSelected;
   @override
   Widget build(BuildContext context) {
     return PickerArrayField(
@@ -55,6 +57,8 @@ class PickerArrayWidget extends StatelessWidget {
           title: title,
           onConfirm: (Picker picker, List value) {
             controller.text = picker.getSelectedValues().toString().replaceAll(new RegExp(r'\['), '').replaceAll(new RegExp(r'\]'), '');
+            if(actAfterSelected != null) 
+              actAfterSelected(picker.getSelectedValues().toString().replaceAll(new RegExp(r'\['), '').replaceAll(new RegExp(r'\]'), ''));
           }
         ).showDialog(context);
       },
