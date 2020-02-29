@@ -16,8 +16,8 @@ class PickerArrayWidget extends StatelessWidget {
     this.onFieldSubmitted,
     this.validator,
     this.style,
-    this.confirmText,
-    this.cancelText,
+    this.confirmText = 'Confirmar',
+    this.cancelText = 'Cancelar',
     this.actAfterSelected,
   }) : super(key: key);
   final TextEditingController controller;
